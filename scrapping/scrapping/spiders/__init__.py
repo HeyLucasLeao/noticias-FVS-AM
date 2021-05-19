@@ -36,7 +36,7 @@ class SubSpider(scrapy.Spider):
     name = 'atualizar'
     std_link = 'https://www.fvs.am.gov.br/noticias'
     urls = []
-    for i in range(1, 5):
+    for i in range(1, 3):
         urls.append(std_link + '?page=' + str(i) + '#')
     start_urls = urls
 
