@@ -36,7 +36,7 @@ class SubSpider(scrapy.Spider):
     name = 'atualizar'
     std_link = 'https://www.fvs.am.gov.br/noticias'
     urls = []
-    for i in range(1, 3):
+    for i in range(1, 2):
         urls.append(std_link + '?page=' + str(i) + '#')
     start_urls = urls
 
@@ -53,8 +53,11 @@ class SubSpider(scrapy.Spider):
                 item['titulo'] = titulos[i]
                 item['data'] = datas[i]
                 item['link'] = std_link + links[i]
-                line = json.dumps(dict(item), ensure_ascii=False) + "\n"
-                file.write(line)
+                if item in file:
+                    break
+                else:
+                    line = json.dumps(dict(item), ensure_ascii=False) + "\n"
+                    file.write(line)
                 yield item
 
 
