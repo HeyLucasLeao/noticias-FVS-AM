@@ -50,6 +50,7 @@ class SubSpider(scrapy.Spider):
         with open('noticias.json', 'r+', encoding='utf-8') as file:
 
             for i in range(len(titulos)):
+                file.seek(0)
                 item['titulo'] = titulos[i]
                 item['data'] = datas[i]
                 item['link'] = std_link + links[i]
