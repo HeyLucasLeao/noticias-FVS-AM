@@ -9,10 +9,10 @@ from scrapping.items import ScrappingItem
 
 class MainSpider(scrapy.Spider):
     name = 'noticias'
-    std_link = 'https://www.fvs.am.gov.br/noticias'
+    std_link = 'https://www.fvs.am.gov.br'
     urls = []
     for i in range(1, 59 + 1):
-        urls.append(std_link + '?page=' + str(i) + '#')
+        urls.append(std_link + '/noticias?page=' + str(i) + '#')
     start_urls = urls
 
     def parse(self, response):
@@ -34,10 +34,10 @@ class MainSpider(scrapy.Spider):
 
 class SubSpider(scrapy.Spider):
     name = 'atualizar'
-    std_link = 'https://www.fvs.am.gov.br/noticias'
+    std_link = 'https://www.fvs.am.gov.br'
     urls = []
     for i in range(1, 2):
-        urls.append(std_link + '?page=' + str(i) + '#')
+        urls.append(std_link + '/noticias?page=' + str(i) + '#')
     start_urls = urls
 
     def parse(self, response):

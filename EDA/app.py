@@ -28,10 +28,20 @@ def norm_keywords(x):
                 return key
     return float('NaN')
 
+def make_clickable(link):
+    # target _blank to open new window
+    # extract clickable text to display for your link
+    return f'<a target="_blank" href="{link}">>'
+
+# link is the column with hyperlinks
 df = pd.read_json(r'C:\Users\heylu\Documents\github\noticias-FVS-AM\scrapping\noticias.json', lines=True)
 
+df['link'] = df['link'].apply(make_clickable)
 df['palavra-chave'] = df['titulo'].apply(norm_keywords)
 df['data'] = [x[:x.index('-') - 1] for x in df['data']]
 df = df[['data','titulo', 'palavra-chave', 'link']]
-st.dataframe(df.to_hml())
+df = df.to_html(escape=False)
+
+
+st.write(df, unsafe_allow_html=True)
 #st.write(df.to_hml(escape=False, index=False), unsafe_allow_html=True)
