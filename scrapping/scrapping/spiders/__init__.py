@@ -47,17 +47,18 @@ class SubSpider(scrapy.Spider):
         datas = response.css('td::text').getall()
         links = response.css('a.link-normal::attr(href)').getall()
 
-        with open('noticias.json', 'a+', encoding='utf-8') as file:
+        with open('noticias.json', 'r+', encoding='utf-8') as file:
 
             for i in range(len(titulos)):
                 item['titulo'] = titulos[i]
                 item['data'] = datas[i]
                 item['link'] = std_link + links[i]
-                if item in file:
+                new_line = json.dumps(dict(item), ensure_ascii=False) + "\n"
+                if new_line in file:
+                    print('JSON ATUALIZADO.')
                     break
-                else:
-                    line = json.dumps(dict(item), ensure_ascii=False) + "\n"
-                    file.write(line)
+                file.read()
+                file.write(new_line)
                 yield item
 
 
