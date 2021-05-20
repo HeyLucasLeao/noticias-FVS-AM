@@ -54,9 +54,9 @@ class SubSpider(scrapy.Spider):
                 item['data'] = datas[i]
                 item['link'] = std_link + links[i]
                 new_line = json.dumps(dict(item), ensure_ascii=False) + "\n"
-                if new_line in file:
-                    print('JSON ATUALIZADO.')
-                    break
+                for line in file:
+                    if line == new_line:
+                        return print("JSON ATUALIZADO")
                 file.read()
                 file.write(new_line)
                 yield item
