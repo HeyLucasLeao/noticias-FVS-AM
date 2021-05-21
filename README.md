@@ -2,7 +2,7 @@
 
 https://share.streamlit.io/heylucasleao/noticias-fvs-am/main
 
-Projeto tem como foco auxiliar na divulgação e visualização de notícias emitidas pela Fundação de Vigilância em Saúde do Amazonas (FVS-AM),
+Projeto tem como foco auxiliar na divulgação, visualização e exploração de notícias emitidas pela Fundação de Vigilância em Saúde do Amazonas (FVS-AM),
 a partir de uma raspagem de dados feita no site deles utilizando biblioteca Scrapy, aonde o mesmo será atualizado esporadicamente. 
 O conjunto de dados está na pasta 'scrapping' sob o nome 'noticias.json'.
 
