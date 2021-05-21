@@ -50,7 +50,7 @@ def norm_keywords(x):
         'taxa de ocupação de leitos', 
         'epidemia de covid-19', 
         'respiradores'],
-        'Novos casos de Covid-19': ['total de casos', 'número de casos', 'novos casos', 'confirmados', 'casos de covid-19', 'amazonas contabiliza', 'amazonas chegam', 'ultrapassam', 'novos dados', 'pessoas', 'caso do novo', 'graves do novo', 'caso de covid-19', 'cenários da covid-19', 'panorama da covid-19', 'taxa de transmissão'],
+        'Novos casos de Covid-19': ['total de casos', 'número de casos', 'novos casos de covid-19', 'casos confirmados de Covid-19', 'casos de covid-19', 'amazonas contabiliza', 'amazonas chegam', 'ultrapassam', 'novos dados', 'caso do novo coronavirus', 'graves do novo coronavirus', 'caso de covid-19', 'cenários da covid-19', 'panorama da covid-19', 'taxa de transmissão'],
         'Suspeita de Covid-19': ['suspeita', 'suspeito', 'suspeitos', 'dados da covid-19'],
         'Testes a Covid-19': ['testes', 'teste', 'dão negativo', 'dão positivo', 'dá positivo', 'dá negativo', 'detecção de covid-19', 'testagem', 'diagnostico de covid-19', 'diagnostico da covid-19', 'diagnostico do covid-19'],
         'Prevenção a Covid-19': ['propagação de covid-19', 'epis', 'enfrentamento a covid-19'],
