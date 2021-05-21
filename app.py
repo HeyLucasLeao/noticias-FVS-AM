@@ -56,7 +56,7 @@ def search_words(x):
     dataset['titulo'] = dataset['titulo'].apply(unidecode)
     dataset['titulo'] = [y.lower() for y in dataset['titulo']]
 
-    for i in range(len(dataset)):
+    for i in range(len(dataset['titulo'])):
         if x in dataset['titulo'][i]:
             res.append(i)
     
