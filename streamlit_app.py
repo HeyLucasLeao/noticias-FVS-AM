@@ -3,6 +3,7 @@ import streamlit as st
 from PIL import Image
 from unidecode import unidecode
 from datetime import date
+from datetime import datetime as dt
 
 def norm_keywords(x):
     dici = {
@@ -158,7 +159,7 @@ if check:
     qtd = len(df) + 1
 else:
     start = st.date_input('Desde', date(2020, 1, 17))
-    end = st.date_input('Até', date(2021, 4, 21))
+    end = st.date_input('Até', dt.now())
     mask_data = (df['data'] >= start) & (df['data'] <= end)
     qtd = st.slider('Quantidade de notícias',min_value=10)
 
