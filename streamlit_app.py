@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 from unidecode import unidecode
+from datetime import date
 
 def norm_keywords(x):
     dici = {
@@ -57,7 +58,7 @@ def search_words(x, df):
     return df.loc[res]
 
 
-df = pd.read_json(r'C:\Users\heylu\Documents\github\noticias-FVS-AM\scrapping\noticias.json', lines=True)
+df = pd.read_json(r'scrapping\noticias.json', lines=True)
 
 df['link'] = df['link'].apply(make_clickable)
 df['categoria'] = df['titulo'].apply(norm_keywords)
@@ -70,23 +71,32 @@ df.reset_index(inplace=True)
 df.drop(columns='index', inplace=True)
 df = df[['data','titulo', 'categoria', 'link']]
 
-img = Image.open(r'C:\Users\heylu\Documents\github\noticias-FVS-AM\stylecloud\stylecloud.png')
+img = Image.open(r'stylecloud\stylecloud.png')
 st.title('Notícias da Fundação de Vigilância em Saúde do Amazonas (FVS-AM)')
 st.image(img,width=None)
 
 inp = st.text_input('Pesquise notícia por palavras no título')
 cat = st.multiselect('Categoria',options=df['categoria'].unique())
 check = st.checkbox('Mostrar todas as notícias',key=2)
+mask_data = (df['data'] >= date(2020, 1, 17))
 
 if check:
     qtd = len(df) + 1
 else:
+    start = st.date_input('Desde', date(2020, 1, 17))
+    end = st.date_input('Até', date(2021, 4, 21))
+    mask_data = (df['data'] >= start) & (df['data'] <= end)
     qtd = st.slider('Quantidade de notícias',min_value=10)
+
 
 if cat:
     mask_cat = df['categoria'].isin(cat)
     df = df[mask_cat]
+
 if inp:
-    st.write(search_words(inp, df).to_html(escape=False, index=False), unsafe_allow_html=True)
+    st.write(search_words(inp, df).loc[mask_data][:qtd].to_html(escape=False, index=False), unsafe_allow_html=True)
 else:
-    st.write(df[:qtd].to_html(escape=False, index=False), unsafe_allow_html=True)
+    st.write(df.loc[mask_data][:qtd].to_html(escape=False, index=False), unsafe_allow_html=True)
+
+st.write("###### Repositório deste projeto: https://github.com/HeyLucasLeao/noticias-FVS-AM")
+st.write("###### Relatório sobre Covid-19 com foco no Estado do Amazonas: https://heylucasleao.github.io/")
