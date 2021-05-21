@@ -102,7 +102,7 @@ def norm_keywords(x):
             if y in x.lower():
                 return key
             elif 'câncer' in x.lower():
-                return 'Outros'
+                return 'Câncer'
     return "Outros"
     
 def traduzir_data(x):
