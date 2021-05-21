@@ -1,8 +1,6 @@
 import pandas as pd
 import streamlit as st
-
-pd.set_option('display.max_colwidth', -1)
-
+import streamlit.components.v1 as components
 
 def norm_keywords(x):
     dici = {
@@ -62,6 +60,7 @@ df.reset_index(inplace=True)
 df.drop(columns='index', inplace=True)
 df = df[['data','titulo', 'palavra-chave', 'link']]
 
+sentence = st.text_input('Procurar artigos...') 
 
 #st.dataframe(df)
 st.write(df.to_html(escape=False, index=False), unsafe_allow_html=True)
