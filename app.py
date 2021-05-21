@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
-import streamlit.components.v1 as components
+from PIL import Image
+from unidecode import unidecode
 
 def norm_keywords(x):
     dici = {
@@ -24,7 +25,7 @@ def norm_keywords(x):
         for y in value:
             if y in x.lower():
                 return key
-    return float('NaN')
+    return " "
     
 def traduzir_data(x):
     dici = {'Jan': '01',
@@ -47,10 +48,24 @@ def traduzir_data(x):
 def make_clickable(link):
     return f'<a target="_blank" href="{link}">>'
 
+def search_words(x):
+    x = unidecode(x)
+    x = x.lower()
+    res = []
+    dataset = df.copy()
+    dataset['titulo'] = dataset['titulo'].apply(unidecode)
+    dataset['titulo'] = [y.lower() for y in dataset['titulo']]
+
+    for i in range(len(dataset)):
+        if x in dataset['titulo'][i]:
+            res.append(i)
+    
+    return df.iloc[res]
+
 df = pd.read_json(r'C:\Users\heylu\Documents\github\noticias-FVS-AM\scrapping\noticias.json', lines=True)
 
 df['link'] = df['link'].apply(make_clickable)
-df['palavra-chave'] = df['titulo'].apply(norm_keywords)
+df['categoria'] = df['titulo'].apply(norm_keywords)
 df['data'] = [x[:x.index('-') - 1] for x in df['data']]
 df['data'] = df['data'].apply(traduzir_data)
 df['data'] = pd.to_datetime(df['data'], format="%d-%m-%Y")
@@ -58,9 +73,21 @@ df['data'] = df['data'].dt.date
 df.sort_values('data', inplace=True, ascending=False)
 df.reset_index(inplace=True)
 df.drop(columns='index', inplace=True)
-df = df[['data','titulo', 'palavra-chave', 'link']]
+df = df[['data','titulo', 'categoria', 'link']]
 
-sentence = st.text_input('Procurar artigos...') 
+img = Image.open(r'C:\Users\heylu\Documents\github\noticias-FVS-AM\stylecloud\stylecloud.png')
+st.title('Notícias da Fundação de Vigilância em Saúde do Amazonas (FVS-AM)')
+st.image(img,width=None)
 
-#st.dataframe(df)
-st.write(df.to_html(escape=False, index=False), unsafe_allow_html=True)
+inp = st.text_input('Pesquise notícia por palavras no título')
+cat = st.multiselect('Categoria',options=df['categoria'].unique())
+
+if cat:
+    mask_cat = df['categoria'].isin(cat)
+    df = df[mask_cat]
+
+if inp:
+    st.write(search_words(inp).to_html(escape=False, index=False), unsafe_allow_html=True)
+else:
+    st.write(df[:10].to_html(escape=False, index=False), unsafe_allow_html=True)
+
