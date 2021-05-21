@@ -5,13 +5,10 @@ from os import environ
 from time import sleep
 import yaml
 
-with open(r'C:\Users\heylu\Documents\github\noticias-FVS-AM\scrapping\config.yml', 'r') as file:
-    config = yaml.safe_load(file)
-
-PREFIX_PATH = config['path']['prefix_path']
+PREFIX_PATH = r'C:\Users\heylu\Documents\github\noticias-FVS-AM\scrapping'
+PATH = r'C:\Users\heylu\Documents\github\noticias-FVS-AM'
 USER = environ.get('GITHUB_USER')
 PASSWORD = environ.get('GITHUB_PASSWORD')
-PATH = config['path']['repo_path']
 remote = f"https://{USER}:{PASSWORD}@github.com:/noticias-FVS-AM.git"
 
 def atualizar():
