@@ -22,7 +22,7 @@ class MainSpider(scrapy.Spider):
         datas = response.css('td::text').getall()
         links = response.css('a.link-normal::attr(href)').getall()
 
-        with open('noticias.json', 'a+', encoding='utf-8') as file:
+        with open(r'noticias.json', 'a+', encoding='utf-8') as file:
 
             for i in range(len(titulos)):
                 item['titulo'] = titulos[i]
