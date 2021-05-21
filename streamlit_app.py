@@ -168,9 +168,15 @@ if cat:
     df = df[mask_cat]
 
 if inp:
-    st.write(search_words(inp, df).loc[mask_data][:qtd].to_html(escape=False, index=False), unsafe_allow_html=True)
+    st.write(search_words(inp, df).loc[mask_data][:qtd].rename(columns={'data': 'Data', 
+    'titulo': 'Título', 
+    'categoria': 'Categoria', 
+    'link': 'Link'}).to_html(escape=False, index=False), unsafe_allow_html=True)
 else:
-    st.write(df.loc[mask_data][:qtd].to_html(escape=False, index=False), unsafe_allow_html=True)
+    st.write(df.loc[mask_data][:qtd].rename(columns={'data': 'Data', 
+    'titulo': 'Título', 
+    'categoria': 'Categoria', 
+    'link': 'Link'}).to_html(escape=False, index=False), unsafe_allow_html=True)
 
 st.write("###### Repositório deste projeto: https://github.com/HeyLucasLeao/noticias-FVS-AM")
 st.write("###### Relatório sobre Covid-19 com foco no Estado do Amazonas: https://heylucasleao.github.io/")
