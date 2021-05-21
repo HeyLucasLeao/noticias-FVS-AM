@@ -5,7 +5,7 @@ from os import environ
 from time import sleep
 import yaml
 
-PREFIX_PATH = r'C:\Users\heylu\Documents\github\noticias-FVS-AM\scrapping'
+PREFIX_PATH = r'scrapping'
 PATH = r'C:\Users\heylu\Documents\github\noticias-FVS-AM'
 USER = environ.get('GITHUB_USER')
 PASSWORD = environ.get('GITHUB_PASSWORD')
