@@ -54,7 +54,7 @@ def norm_keywords(x):
         'Suspeita de Covid-19': ['suspeita', 'suspeito', 'suspeitos', 'dados da covid-19'],
         'Testes a Covid-19': ['testes', 'teste', 'dão negativo', 'dão positivo', 'dá positivo', 'dá negativo', 'detecção de covid-19', 'testagem', 'diagnostico de covid-19', 'diagnostico da covid-19', 'diagnostico do covid-19'],
         'Prevenção a Covid-19': ['propagação de covid-19', 'epis', 'enfrentamento a covid-19'],
-        'Morte por Covid-19': ['mortes por corona virus', 'mortes por covid 19', 'mortes pelo novo corona virus', 'mortes', 'mortos', 'óbitos', 'morte', 'óbito'],
+        'Morte por Covid-19': ['mortes por corona virus', 'mortes por covid 19', 'mortes pelo novo corona virus', 'redução de óbitos e estabilização de casos', 'mortos', 'óbitos', 'morte', 'óbito'],
         'Influenza': ['influenza'],
         'Estabelecimentos, eventos ou festas clandestinas': ['estabelecimento', 
         'estabelecimentos', 
@@ -101,6 +101,8 @@ def norm_keywords(x):
         for y in value:
             if y in x.lower():
                 return key
+            elif 'câncer' in x.lower():
+                return 'Outros'
     return "Outros"
     
 def traduzir_data(x):
