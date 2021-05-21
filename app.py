@@ -25,7 +25,7 @@ def norm_keywords(x):
         for y in value:
             if y in x.lower():
                 return key
-    return " "
+    return "Outros"
     
 def traduzir_data(x):
     dici = {'Jan': '01',
@@ -76,13 +76,17 @@ st.image(img,width=None)
 
 inp = st.text_input('Pesquise notícia por palavras no título')
 cat = st.multiselect('Categoria',options=df['categoria'].unique())
+check = st.checkbox('Mostrar todas as notícias',key=2)
+
+if check:
+    qtd = len(df) + 1
+else:
+    qtd = st.slider('Quantidade de notícias',min_value=10)
 
 if cat:
     mask_cat = df['categoria'].isin(cat)
     df = df[mask_cat]
-
 if inp:
     st.write(search_words(inp, df).to_html(escape=False, index=False), unsafe_allow_html=True)
 else:
-    st.write(df[:10].to_html(escape=False, index=False), unsafe_allow_html=True)
-
+    st.write(df[:qtd].to_html(escape=False, index=False), unsafe_allow_html=True)
