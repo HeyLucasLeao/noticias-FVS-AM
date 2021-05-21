@@ -48,19 +48,14 @@ def traduzir_data(x):
 def make_clickable(link):
     return f'<a target="_blank" href="{link}">>'
 
-def search_words(x):
+def search_words(x, df):
+    dataset = df['titulo'].apply(unidecode).copy()
+    dataset = [x.lower() for x in dataset]
     x = unidecode(x)
     x = x.lower()
-    res = []
-    dataset = df.copy()
-    dataset['titulo'] = dataset['titulo'].apply(unidecode)
-    dataset['titulo'] = [y.lower() for y in dataset['titulo']]
+    res = df.index[[pd.Series(x.split()).isin(y.split()).values[0] for y in dataset]].tolist()
+    return df.loc[res]
 
-    for i in range(len(dataset['titulo'])):
-        if x in dataset['titulo'][i]:
-            res.append(i)
-    
-    return df.iloc[res]
 
 df = pd.read_json(r'C:\Users\heylu\Documents\github\noticias-FVS-AM\scrapping\noticias.json', lines=True)
 
@@ -87,7 +82,7 @@ if cat:
     df = df[mask_cat]
 
 if inp:
-    st.write(search_words(inp).to_html(escape=False, index=False), unsafe_allow_html=True)
+    st.write(search_words(inp, df).to_html(escape=False, index=False), unsafe_allow_html=True)
 else:
     st.write(df[:10].to_html(escape=False, index=False), unsafe_allow_html=True)
 
