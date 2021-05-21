@@ -5,7 +5,7 @@ with open('stopwords.txt', 'r', encoding='utf-8') as file:
     stop_words = file.read().split('\n')
 stop_words = [x.strip() for x in stop_words]
 
-df = pd.read_json(r'C:\Users\heylu\Documents\github\noticias-FVS-AM\scrapping\noticias.json', lines=True)
+df = pd.read_json(r'../scrapping/noticias.json', lines=True)
 
 txt = ''
 for x in df['titulo']:
