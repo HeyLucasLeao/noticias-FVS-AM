@@ -15,7 +15,7 @@ PATH = config['path']['repo_path']
 remote = f"https://{USER}:{PASSWORD}@github.com:/noticias-FVS-AM.git"
 
 def atualizar():
-    print('atualizando...')
+    print('abrindo spider...')
     Popen.wait(Popen('conda run -n noticias-fvs-am scrapy crawl atualizar',
                      cwd=PREFIX_PATH, shell=True), 
                      timeout=360)
@@ -39,4 +39,4 @@ print('JSON atualizado.')
 sleep(3)
 git_push()
 print('Push feito com sucesso.')
-sleep(15)
+sleep(3)
