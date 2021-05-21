@@ -58,7 +58,7 @@ def search_words(x, df):
     return df.loc[res]
 
 
-df = pd.read_json(r'scrapping\noticias.json', lines=True)
+df = pd.read_json(r'scrapping/noticias.json', lines=True)
 
 df['link'] = df['link'].apply(make_clickable)
 df['categoria'] = df['titulo'].apply(norm_keywords)
@@ -71,7 +71,7 @@ df.reset_index(inplace=True)
 df.drop(columns='index', inplace=True)
 df = df[['data','titulo', 'categoria', 'link']]
 
-img = Image.open(r'stylecloud\stylecloud.png')
+img = Image.open(r'stylecloud/stylecloud.png')
 st.title('Notícias da Fundação de Vigilância em Saúde do Amazonas (FVS-AM)')
 st.image(img,width=None)
 
