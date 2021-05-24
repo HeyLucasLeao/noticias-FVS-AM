@@ -11,7 +11,7 @@ def norm_keywords(x):
         'Cloroquina': ['cloroquina'],
         'Dengue': ['aedes', 'aegypti', 'dengue'],
         'Vacina para Covid-19': ['vacina', 'dose', 'doses', 'vacinas', 'vacinação', 'vacinaram', 'auditoria', 'já completou 30 municípios', 'imunizados', 'imunização'],
-        'Pessoas recuperadas': ['recuperados', 'recuperadas', 'neste domingo', 'sexta feira 17 07', 'altas médicas'] ,
+        'Pessoas recuperadas': ['recuperados', 'recuperadas', 'sexta feira 17 07', 'altas médicas'] ,
         'Cenário epidomiológico': ['epidemiológico', 
         'epidemiológica', 
         'nesta sexta feira 19', 
