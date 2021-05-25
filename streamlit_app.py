@@ -52,7 +52,7 @@ def norm_keywords(x):
         'respiradores'],
         'Novos casos de Covid-19': ['total de casos', 'número de casos', 'novos casos de covid-19', 'casos confirmados de Covid-19', 'casos de covid-19', 'amazonas contabiliza', 'amazonas chegam', 'ultrapassam', 'novos dados', 'caso do novo coronavirus', 'graves do novo coronavirus', 'caso de covid-19', 'cenários da covid-19', 'panorama da covid-19', 'taxa de transmissão'],
         'Suspeita de Covid-19': ['suspeita', 'suspeito', 'suspeitos', 'dados da covid-19'],
-        'Testes a Covid-19': ['testes', 'teste', 'dão negativo', 'dão positivo', 'dá positivo', 'dá negativo', 'detecção de covid-19', 'testagem', 'diagnostico de covid-19', 'diagnostico da covid-19', 'diagnostico do covid-19'],
+        'Testes a Covid-19': ['testes', 'teste', 'dão negativo', 'dão positivo', 'dá positivo', 'dá negativo', 'detecção de covid-19', 'testagem', 'diagnostico de covid-19', 'diagnostico da covid-19', 'diagnostico do covid-19', 'detecção do novo coronavírus'],
         'Prevenção a Covid-19': ['propagação de covid-19', 'epis', 'enfrentamento a covid-19'],
         'Morte por Covid-19': ['mortes por corona virus', 'mortes por covid 19', 'mortes pelo novo corona virus', 'redução de óbitos e estabilização de casos', 'mortos', 'óbitos', 'morte', 'óbito'],
         'Influenza': ['influenza'],
