@@ -182,4 +182,4 @@ else:
     'link': 'Link'}).to_html(escape=False, index=False), unsafe_allow_html=True)
 
 st.write("###### Repositório deste projeto: https://github.com/HeyLucasLeao/noticias-FVS-AM")
-st.write("###### Relatório sobre Covid-19 com foco no Estado do Amazonas: https://heylucasleao.github.io/")
+st.write("###### Dados sobre Covid-19 com foco no Estado do Amazonas: https://share.streamlit.io/heylucasleao/covid-no-amazonas/main")
