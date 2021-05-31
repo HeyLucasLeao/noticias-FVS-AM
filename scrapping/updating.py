@@ -3,7 +3,6 @@ from time import sleep
 from git import Repo
 from os import environ
 from time import sleep
-import yaml
 
 PREFIX_PATH = r'scrapping'
 PATH = r'C:\Users\heylu\Documents\github\noticias-FVS-AM'
