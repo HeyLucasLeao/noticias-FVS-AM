@@ -120,7 +120,8 @@ def traduzir_data(x):
     'Dez': '12'}
 
     x = x.split()
-    x[1] = dici[x[1]]
+    if len(x) == 5:
+        x[1] = dici[x[1]]
     return "-".join(y for y in x)
 
 def make_clickable(link):
