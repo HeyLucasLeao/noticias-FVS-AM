@@ -119,10 +119,10 @@ def traduzir_data(x):
     'Nov': '11',
     'Dez': '12'}
 
-    x = x.split()
-    if len(x) == 5:
-        x[1] = dici[x[1]]
-    return "-".join(y for y in x)
+    x = x.split(' ')
+    x = x[:3]
+    x[1] = dici[x[1]]
+    return " ".join(y for y in x)
 
 def make_clickable(link):
     return f'<a target="_blank" href="{link}">>'
@@ -140,9 +140,8 @@ df = pd.read_json(r'scrapping/noticias.json', lines=True)
 
 df['link'] = df['link'].apply(make_clickable)
 df['categoria'] = df['titulo'].apply(norm_keywords)
-df['data'] = [x[:x.index('-') - 1] for x in df['data']]
 df['data'] = df['data'].apply(traduzir_data)
-df['data'] = pd.to_datetime(df['data'], format="%d-%m-%Y")
+df['data'] = pd.to_datetime(df['data'], format="%d %m %Y")
 df['data'] = df['data'].dt.date
 df.sort_values('data', inplace=True, ascending=False)
 df.reset_index(inplace=True)
