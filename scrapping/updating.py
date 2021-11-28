@@ -12,7 +12,7 @@ remote = f"https://{USER}:{PASSWORD}@github.com:/noticias-FVS-AM.git"
 
 def atualizar():
     print('abrindo spider...')
-    Popen.wait(Popen('conda run -n noticias-fvs-am scrapy crawl atualizar',
+    Popen.wait(Popen('scrapy crawl atualizar',
                      cwd=PREFIX_PATH, shell=True), 
                      timeout=360)
 
